@@ -1,0 +1,76 @@
+SAKI 0.3 - INSTALADOR COM ARTE + RESIZE REAL-ESRGAN
+===============================================
+Base: arquivo enviado SAKI-PDF-0.2.cs, com menu PDF mantido.
+
+CONTEUDO
+- SAKI-PDF-0.3.cs: codigo principal modificado.
+- PdfiumViewer.cs: visualizador PDF da versao modular anterior.
+- SakiRealEsrgan.cs: motor de super-resolucao em lote (cliente de executavel externo).
+- SAKI_InstallerArt.jpg: miniatura redimensionada a partir da imagem fornecida.
+- COMPILAR_WIN64.bat: compilacao x64 incorporando a imagem como recurso no EXE.
+
+INSTALADOR
+Ao executar SAKI-0.1.exe sem argumentos, a janela de instalacao mostra
+imagem lateral, titulo, descricao e botoes. A JPG entra no proprio executavel
+como recurso SAKI.InstallerArt. NAO precisa acompanhar o EXE apos compilar.
+
+RESIZE
+O submenu Resize continua registrando o mesmo comando '-resize'.
+Na caixa Mode foram acrescidos quatro modos:
+- AI Real-ESRGAN 2x (Photo)
+- AI Real-ESRGAN 4x (Photo)
+- AI Real-ESRGAN 2x (Anime)
+- AI Real-ESRGAN 4x (Anime)
+
+Os modos existentes (% / largura fixa / altura fixa) continuam como antes.
+Na IA, as saidas sao NOVOS arquivos .png com sufixos _SR2x_photo, etc.
+O original NUNCA e apagado no modo AI. A IA nao e substituida por
+interpolacao comum se estiver indisponivel.
+
+MOTOR REAL-ESRGAN (NECESSARIO APENAS PARA MODOS AI)
+Baixe a distribuicao portatil do projeto:
+https://github.com/xinntao/Real-ESRGAN-ncnn-vulkan/releases
+
+Extraia para esta estrutura apos compilar:
+SAKI-0.1.exe
+pdfium.dll                 (para PDF View)
+libwebp.dll                (para suporte WebP original)
+realesrgan-ncnn-vulkan/
+  realesrgan-ncnn-vulkan.exe
+  models/
+    realesrgan-x4plus.param
+    realesrgan-x4plus.bin
+    realesrgan-x4plus-anime.param
+    realesrgan-x4plus-anime.bin
+  [outras DLLs e arquivos que vierem no pacote do motor]
+
+Tambem e possivel ter realesrgan-ncnn-vulkan.exe e a pasta models
+na mesma pasta do SAKI-0.1.exe.
+
+Requer placa de video/controlador compativel com Vulkan.
+Se a GPU nao for compativel, a ferramenta retornara erro: nao ha
+fallback automatico para CPU ou bicubico.
+A ferramenta processa JPG, PNG, WebP nativamente. BMP/GIF/JFIF e outros
+formatos sao convertidos temporariamente para PNG via System.Drawing:
+HEIC/HEIF/AVIF podem falhar se nao houver codec compativel.
+GIFs animados podem ser convertidos apenas pelo quadro inicial.
+
+PDF
+- Requer pdfium.dll x64 do pacote de PDFium de fonte confiavel.
+- Mantido menu de contexto para .pdf, invocando -pdfview.
+
+WINDOWS DEFENDER / SMARTSCREEN
+Este pacote nao altera nem contorna recursos de seguranca do Windows.
+Instalacao HKCU (por usuario), como na versao original.
+
+VALIDACAO
+- Conferencia estrutural e comparacao automatica de trechos efetuadas.
+- Nao foi possivel compilar ou executar em ambiente Windows neste sistema.
+- Faca primeiro um teste com copias de arquivos: os modos antigos de
+  resize/convert do seu codigo original continuam apagando o original.
+
+VERSAO C# UNICO
+- SAKI-PDF-0.3-UNICO.cs incorpora o codigo principal, PDFium e Real-ESRGAN.
+- COMPILAR_UNICO_WIN64.bat compila esta versao sem os dois modulos separados.
+- SAKI_InstallerArt.jpg ainda precisa estar na pasta durante a COMPILACAO,
+  depois fica embutida no executavel.
