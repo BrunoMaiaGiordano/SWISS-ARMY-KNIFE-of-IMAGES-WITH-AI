@@ -4,7 +4,6 @@ ____::\¯¯¯¯\`·.'|.·´`·.·|¨¨|       |:::|·.·´`·.|\¯¯¯¯\·./'|.
 \____\/____/`·.'|____|::|____|:::|____|:|____|`·.|____|:::
  '`·.:::::::::::::`·./'`·.:::::`·'`·.:::::`·.'`·.:::::`·`·.::::'`·.'`·.:::::`·.
 SWISS ARMY KNIFE of IMAGES
-https://github.com/BrunoMaiaGiordano/SWISS-ARMY-KNIFE-of-IMAGES-WITH-AI/blob/main/final_1170x658.png?raw=true
 <img src="https://github.com/BrunoMaiaGiordano/SWISS-ARMY-KNIFE-of-IMAGES-WITH-AI/blob/main/final_1170x658.png?raw=true" alt="SAKI Image Editor">
 SAKI-0.1 is a simple, compiled C program designed for essential batch image manipulation, supporting JPG, PNG, BMP, GIF, WEBP, and JFIF formats. It installs locally and adds an entry to the Windows Explorer context menu—labeled "SWISS ARMY KNIFE of IMAGES"—offering the following functions::
 
